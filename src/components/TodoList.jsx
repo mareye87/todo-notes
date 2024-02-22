@@ -23,9 +23,10 @@ const TodoList = () => {
       });
   }, []);
 
-  if (todoList.length < 1) {
+  if (!todoList) {
     return (
       <div className="px-8 py-4 bg-cyan-900">
+        <Loading />
         <h1 className="text-slate-300 tracking-wide">Your list is empty...</h1>
       </div>
     );

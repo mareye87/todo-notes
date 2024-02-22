@@ -1,7 +1,11 @@
-import React from "react";
+import RotateLoader from "react-spinners/RotateLoader";
 
 const Loading = () => {
-  return <h1 className="text-xl text-white">Loading...</h1>;
+  return (
+    <div className="w-full flex justify-center p-4">
+      <RotateLoader />
+    </div>
+  );
 };
 
 export default Loading;
