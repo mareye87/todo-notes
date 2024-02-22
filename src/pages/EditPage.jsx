@@ -4,7 +4,8 @@ import EditIcon from "../components/icons/EditIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Loading from "../components/Loading";
-const url = "http://localhost:5555/todo";
+import { BASE_URL } from "../utils";
+const url = BASE_URL;
 
 const EditPage = () => {
   const [loading, setLoading] = useState(false);

@@ -3,10 +3,11 @@ import BackButton from "../components/buttons/BackButton";
 import DeleteIcon from "../components/icons/DeleteIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../utils";
 
 const DeletePage = () => {
   const { id } = useParams();
-  const url = "http://localhost:5555/todo";
+  const url = BASE_URL;
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [text, setText] = useState("");

@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import SingleTask from "./SingleTask";
 import axios from "axios";
 import Loading from "./Loading";
+import { BASE_URL } from "../utils";
 
 const TodoList = () => {
   const [todoList, setTodoList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const url = "http://localhost:5555/todo";
+  const url = BASE_URL;
 
   useEffect(() => {
     setLoading(true);

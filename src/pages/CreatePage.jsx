@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import BackButton from "../components/buttons/BackButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils";
 
 const CreatePage = () => {
   const [task, setTask] = useState("");
   const [pending, setPending] = useState(false);
   const navigate = useNavigate();
-  const url = "http://localhost:5555/todo";
+  const url = BASE_URL;
 
   const handleAddToDo = () => {
     const data = {
