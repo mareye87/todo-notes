@@ -3,10 +3,10 @@ import SingleTask from "./SingleTask";
 import axios from "axios";
 import Loading from "./Loading";
 import { BASE_URL } from "../utils";
+import { useGlobalContext } from "../context";
 
 const TodoList = () => {
-  const [todoList, setTodoList] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { todoList, setTodoList, loading, setLoading } = useGlobalContext();
   const url = BASE_URL;
 
   useEffect(() => {
@@ -23,10 +23,9 @@ const TodoList = () => {
       });
   }, []);
 
-  if (!todoList) {
+  if (todoList.length < 1 && !loading) {
     return (
       <div className="px-8 py-4 bg-cyan-900">
-        <Loading />
         <h1 className="text-slate-300 tracking-wide">Your list is empty...</h1>
       </div>
     );

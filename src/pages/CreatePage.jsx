@@ -4,10 +4,11 @@ import BackButton from "../components/buttons/BackButton";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils";
+import { useGlobalContext } from "../context";
 
 const CreatePage = () => {
   const [task, setTask] = useState("");
-  const [pending, setPending] = useState(false);
+  const { setLoading, loading } = useGlobalContext();
   const navigate = useNavigate();
   const url = BASE_URL;
 
@@ -15,16 +16,16 @@ const CreatePage = () => {
     const data = {
       text: task,
     };
-    setPending(true);
+    setLoading(true);
     axios
       .post(url, data)
       .then((response) => {
-        setPending(false);
+        setLoading(false);
         navigate("/");
       })
       .catch((error) => {
         console.log(error);
-        setPending(false);
+        setLoading(false);
         alert("An error happened, Please check console");
       });
   };
@@ -34,7 +35,7 @@ const CreatePage = () => {
       <div className="w-full rounded-lg overflow-hidden">
         <div className="flex justify-between items-center py-4 px-8 shadow-2xl bg-cyan-600">
           <h1 className="text-2xl text-center text-slate-100"> Create task</h1>
-          <button onClick={handleAddToDo} disabled={pending}>
+          <button onClick={handleAddToDo}>
             <ConfirmIcon />
           </button>
         </div>

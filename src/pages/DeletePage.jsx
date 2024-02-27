@@ -4,11 +4,12 @@ import DeleteIcon from "../components/icons/DeleteIcon";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { BASE_URL } from "../utils";
+import { useGlobalContext } from "../context";
 
 const DeletePage = () => {
   const { id } = useParams();
   const url = BASE_URL;
-  const [loading, setLoading] = useState(false);
+  const { loading, setLoading } = useGlobalContext();
   const navigate = useNavigate();
   const [text, setText] = useState("");
 

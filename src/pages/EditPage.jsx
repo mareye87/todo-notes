@@ -6,14 +6,16 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { BASE_URL } from "../utils";
 const url = BASE_URL;
+import { useGlobalContext } from "../context";
 
 const EditPage = () => {
-  const [loading, setLoading] = useState(false);
+  const { loading, setLoading } = useGlobalContext();
   const navigate = useNavigate();
   const { id } = useParams();
   const [text, setText] = useState("");
   const [done, setDone] = useState(false);
 
+  //grab values of todo you want to edit
   useEffect(() => {
     setLoading(true);
     axios
@@ -52,14 +54,14 @@ const EditPage = () => {
       <div className="w-full rounded-lg overflow-hidden">
         <div className="flex justify-between items-center py-4 px-8 shadow-2xl bg-cyan-600">
           <h1 className="text-2xl text-center text-slate-100"> Edit Task</h1>
-          <button onClick={handleEdit} disabled={loading}>
+          <button onClick={handleEdit}>
             <EditIcon />
           </button>
         </div>
         <div className="px-8 py-4 bg-cyan-900 w-full">
           {loading ? <Loading /> : ""}
           <div className="my-3 text-lg text-slate-100 flex items-center justify-end gap-x-3">
-            <label>{!done ? "Set as finished" : "Set as unfinished"}</label>
+            <label>{done ? "Finished" : "Unfinished"}</label>
             <input
               type="checkbox"
               onChange={() => {

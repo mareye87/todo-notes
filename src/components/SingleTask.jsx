@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
 import { CiTrash } from "react-icons/ci";
 
 const SingleTask = ({ todo }) => {
-  const [done, setDone] = useState(todo.done ? true : false);
+  const [done, setDone] = useState(todo.done);
+
+  useEffect(() => {
+    setDone(todo.done);
+  });
 
   return (
     <div className="flex flex-col ">
